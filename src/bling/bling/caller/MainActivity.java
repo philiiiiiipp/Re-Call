@@ -1,8 +1,6 @@
 package bling.bling.caller;
 
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.app.Activity;
@@ -31,7 +29,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
     	super.onResume();
     	
-    	getCallDetails();
+    	getCallDetails();	
     }
 
     /**
