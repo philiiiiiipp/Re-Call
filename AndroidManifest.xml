@@ -29,6 +29,10 @@
             android:name="bling.bling.caller.ui.CallDetailActivity"
             android:label="@string/title_activity_call_detail" >
         </activity>
+        <activity
+            android:name="bling.bling.caller.ui.SnoozeOrCallActivity"
+            android:label="@string/title_activity_snooze_or_call" >
+        </activity>
     </application>
 
 </manifest>
