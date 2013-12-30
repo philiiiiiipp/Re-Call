@@ -1,17 +1,19 @@
 package bling.bling.caller.ui;
 
+import java.text.DateFormat;
 import java.util.Date;
 
-import bling.bling.caller.R;
-import bling.bling.caller.R.id;
-import bling.bling.caller.R.layout;
-import bling.bling.caller.R.menu;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
+import bling.bling.caller.R;
 
 /**
  * Activity to create an alarm
@@ -61,7 +63,20 @@ public class CallDetailActivity extends Activity {
 
 		Date date = new Date(intent.getLongExtra(DATE_INTENT, 0));
 		TextView dateView = (TextView) findViewById(R.id.nameOrNumber);
-		dateView.setText(date.toLocaleString());
+
+		DateFormat formater = DateFormat.getDateTimeInstance();
+		dateView.setText(formater.format(date));
+	}
+
+	public void setAlarm(final View view) {
+		AlarmManager a = (AlarmManager) this
+				.getSystemService(Context.ALARM_SERVICE);
+
+		Intent intent = new Intent(this, MainActivity.class);
+		PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent,
+				PendingIntent.FLAG_CANCEL_CURRENT);
+
+		a.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pIntent);
 	}
 
 	@Override

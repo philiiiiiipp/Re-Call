@@ -1,5 +1,6 @@
 package bling.bling.caller.ui;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import android.content.Context;
@@ -75,6 +76,7 @@ public class DatabaseAdapter extends CursorAdapter {
 		}
 
 		TextView textViewDate = (TextView) view.findViewById(R.id.secondLine);
-		textViewDate.setText(callDate.toLocaleString());
+		DateFormat formater = DateFormat.getDateTimeInstance();
+		textViewDate.setText(formater.format(callDate));
 	}
 }
