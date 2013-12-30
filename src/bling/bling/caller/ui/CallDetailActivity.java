@@ -68,6 +68,11 @@ public class CallDetailActivity extends Activity {
 		dateView.setText(formater.format(date));
 	}
 
+	/**
+	 * Set the alarm for the given time
+	 * 
+	 * @param view
+	 */
 	public void setAlarm(final View view) {
 		AlarmManager a = (AlarmManager) this
 				.getSystemService(Context.ALARM_SERVICE);
