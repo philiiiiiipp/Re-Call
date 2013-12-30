@@ -23,6 +23,7 @@ public class CallManager {
 	private final Set<CallManagerListener> _listeners = new HashSet<CallManagerListener>();
 
 	private final static String[] QUERY_FIELDS = {
+			android.provider.CallLog.Calls._ID,
 			android.provider.CallLog.Calls.NUMBER,
 			android.provider.CallLog.Calls.TYPE,
 			android.provider.CallLog.Calls.CACHED_NAME,
@@ -38,6 +39,17 @@ public class CallManager {
 	 */
 	public static CallManager get() {
 		return _instance;
+	}
+
+	/**
+	 * Get the database cursor for the call history
+	 * 
+	 * @param context
+	 * @return an sql cursor with the whole call history
+	 */
+	public static Cursor getCursor(final Context context) {
+		return context.getContentResolver().query(CallLog.Calls.CONTENT_URI,
+				QUERY_FIELDS, null, null, QUERY_ORDER);
 	}
 
 	/**
