@@ -16,7 +16,7 @@ import bling.bling.caller.R;
 public class DatabaseAdapter extends CursorAdapter {
 
 	/**
-	 * Adapter to bind the call history to a listview
+	 * Adapter to bind the call history to a ListView
 	 * 
 	 * @param context
 	 * @param c

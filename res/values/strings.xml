@@ -6,4 +6,7 @@
     <string name="hello_world">Hello world!</string>
 
     <color name="white">#FFFFFF</color>
+
+    <string name="title_activity_call_detail">CallDetail</string>
+
 </resources>
