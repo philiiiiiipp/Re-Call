@@ -1,9 +1,16 @@
 package bling.bling.caller.manager;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import android.provider.CallLog;
 
+/**
+ * Class representation of a call, holding all available details
+ * 
+ * @author philipp
+ * 
+ */
 public class CallContainer {
 
 	private final String _phoneNumber;
@@ -50,5 +57,17 @@ public class CallContainer {
 	 */
 	public Date getCallTime() {
 		return _callTime;
+	}
+
+	/**
+	 * Get a formated String representation of the call time
+	 * 
+	 * @see java.text.DateFormat DateFormat.getDateTimeInstance
+	 * 
+	 * @return called time in String representation
+	 */
+	public String getFormatedDate() {
+
+		return DateFormat.getDateTimeInstance().format(_callTime);
 	}
 }

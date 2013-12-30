@@ -1,19 +1,14 @@
 package bling.bling.caller.ui;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.CallLog;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import bling.bling.caller.R;
+import bling.bling.caller.manager.CallContainer;
+import bling.bling.caller.utils.Utils;
 
 /**
  * Activity to create an alarm
@@ -23,49 +18,28 @@ import bling.bling.caller.R;
  */
 public class CallDetailActivity extends Activity {
 
-	/**
-	 * Intent name of the number data
-	 */
-	public static final String NUMBER_INTENT = "call_detail_number_intent";
-
-	/**
-	 * Intent name of the date data
-	 */
-	public static final String DATE_INTENT = "call_detail_date_intent";
-
-	/**
-	 * Intent name of the name data
-	 */
-	public static final String NAME_INTENT = "call_detail_name_intent";
-
-	/**
-	 * Intent name of the type data
-	 */
-	public static final String TYPE_INTENT = "call_detail_type_intent";
+	TimePicker _timePicker;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_call_detail);
 
-		Intent intent = this.getIntent();
+		CallContainer cc = Utils.extractCallContainer(this.getIntent());
 
-		String number = intent.getStringExtra(NUMBER_INTENT);
-		String name = intent.getStringExtra(NAME_INTENT);
-		int callType = intent.getIntExtra(TYPE_INTENT,
-				CallLog.Calls.INCOMING_TYPE);
-
-		if (name != null) {
-			this.setTitle(name);
+		if (cc.getName() != null) {
+			this.setTitle(cc.getName());
 		} else {
-			this.setTitle(number);
+			this.setTitle(cc.getPhoneNumber());
 		}
 
-		Date date = new Date(intent.getLongExtra(DATE_INTENT, 0));
 		TextView dateView = (TextView) findViewById(R.id.nameOrNumber);
+		dateView.setText(cc.getFormatedDate());
 
-		DateFormat formater = DateFormat.getDateTimeInstance();
-		dateView.setText(formater.format(date));
+		_timePicker = (TimePicker) this.findViewById(R.id.timePicker);
+		_timePicker.setIs24HourView(true);
+		_timePicker.setCurrentHour(0);
+		_timePicker.setCurrentMinute(15);
 	}
 
 	/**
@@ -74,14 +48,13 @@ public class CallDetailActivity extends Activity {
 	 * @param view
 	 */
 	public void setAlarm(final View view) {
-		AlarmManager a = (AlarmManager) this
-				.getSystemService(Context.ALARM_SERVICE);
+		long countDownInMS = _timePicker.getCurrentHour() * 60 * 60 * 1000;
+		countDownInMS += _timePicker.getCurrentMinute() * 60 * 1000;
 
-		Intent intent = new Intent(this, MainActivity.class);
-		PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent,
-				PendingIntent.FLAG_CANCEL_CURRENT);
+		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
+				.getExtras(), countDownInMS);
 
-		a.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pIntent);
+		finish();
 	}
 
 	@Override

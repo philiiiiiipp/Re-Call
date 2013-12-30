@@ -8,9 +8,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SnoozeOrCallActivity" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dip" >
+
+        <Button
+            android:id="@+id/call_button"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dip"
+            android:onClick="callClicked"
+            android:text="@string/call_button" />
+
+        <Button
+            android:id="@+id/snooze_button"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:onClick="snoozeClicked"
+            android:text="@string/snooze_button" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/timeToCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dip"
+        android:textSize="40sp"
+        android:text="@string/time_to_call"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/nameOrNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeToCall"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/dummy_number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <AnalogClock
+        android:id="@+id/currentClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameOrNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
 
 </RelativeLayout>

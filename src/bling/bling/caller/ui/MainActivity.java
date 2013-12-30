@@ -12,8 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import bling.bling.caller.R;
 import bling.bling.caller.manager.CallManager;
+import bling.bling.caller.utils.IntentStringExtra;
 
 public class MainActivity extends Activity implements OnItemClickListener {
 
@@ -69,11 +71,19 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		Date callDate = new Date(cursor.getLong(dateID));
 
 		Intent intent = new Intent(this, CallDetailActivity.class);
-		intent.putExtra(CallDetailActivity.NUMBER_INTENT, calledNumber);
-		intent.putExtra(CallDetailActivity.NAME_INTENT, calledName);
-		intent.putExtra(CallDetailActivity.TYPE_INTENT, callType);
-		intent.putExtra(CallDetailActivity.DATE_INTENT, callDate.getTime());
+		intent.putExtra(IntentStringExtra.NUMBER_INTENT, calledNumber);
+		intent.putExtra(IntentStringExtra.NAME_INTENT, calledName);
+		intent.putExtra(IntentStringExtra.TYPE_INTENT, callType);
+		intent.putExtra(IntentStringExtra.DATE_INTENT, callDate.getTime());
 
-		this.startActivity(intent);
+		this.startActivityForResult(intent, 1);
+	}
+
+	@Override
+	protected void onActivityResult(final int requestCode,
+			final int resultCode, final Intent data) {
+
+		Toast.makeText(this, "Alarm was set successfully.", Toast.LENGTH_SHORT)
+				.show();
 	}
 }
