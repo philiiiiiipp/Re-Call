@@ -17,6 +17,12 @@ import bling.bling.caller.R;
 import bling.bling.caller.manager.CallManager;
 import bling.bling.caller.utils.IntentStringExtra;
 
+/**
+ * List activity for the whole call history
+ * 
+ * @author philipp
+ * 
+ */
 public class MainActivity extends Activity implements OnItemClickListener {
 
 	private DatabaseAdapter _adapter;

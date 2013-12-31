@@ -21,7 +21,7 @@ public class Utils {
 	/**
 	 * The snooze time, when it should be asked again
 	 */
-	public static long SNOOZE_TIME = 10000;
+	public static long SNOOZE_TIME = 5000;
 
 	/**
 	 * Extracts the called details from the given intent
@@ -66,6 +66,6 @@ public class Utils {
 		PendingIntent pIntent = PendingIntent.getActivity(packageContext, 0,
 				intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-		a.set(AlarmManager.RTC, System.currentTimeMillis() + time, pIntent);
+		a.set(AlarmManager.RTC, time, pIntent);
 	}
 }

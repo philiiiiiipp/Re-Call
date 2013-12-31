@@ -12,17 +12,17 @@
         android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+		android:layout_above="@+id/call_button"
         android:layout_centerInParent="true"
         android:layout_marginBottom="10dip" >
 
         <Button
-            android:id="@+id/call_button"
+            android:id="@+id/drop_button"
             android:layout_width="120dip"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dip"
-            android:onClick="callClicked"
-            android:text="@string/call_button" />
+            android:onClick="dropClicked"
+            android:text="@string/drop_button" />
 
         <Button
             android:id="@+id/snooze_button"
@@ -31,7 +31,16 @@
             android:onClick="snoozeClicked"
             android:text="@string/snooze_button" />
     </LinearLayout>
-
+    
+    <Button
+        android:id="@+id/call_button"
+        android:layout_width="120dip"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="callClicked"
+        android:text="@string/call_button" />
+    
     <TextView
         android:id="@+id/timeToCall"
         android:layout_width="wrap_content"

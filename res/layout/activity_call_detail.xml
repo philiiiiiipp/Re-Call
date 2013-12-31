@@ -6,34 +6,159 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#F0F0F0"
     tools:context=".CallDetailActivity" >
 
-    <TextView
-        android:id="@+id/nameOrNumber"
-        android:layout_width="fill_parent"
+    <TextView 
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dip"
-        android:text="@string/dummy_number"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TimePicker
-        android:id="@+id/timePicker"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="10dip"/>
+    
+    <TextView 
+        android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="117dp" />
-
-    <Button
-        android:id="@+id/button1"
+        android:layout_below="@+id/description"
+        android:layout_marginRight="43dip"
+        android:text="@string/name_label"/>
+    
+    <TextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="setAlarm"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="@string/start_alarm" />
+		android:layout_toRightOf="@+id/name_label"
+        android:layout_marginBottom="20dip"
+        />
+    
+    <TextView 
+        android:id="@+id/number_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_label"
+        android:text="@string/number_label"/>
+    
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name_label"
+        android:layout_marginBottom="20dip"
+        />
+    
+    <TextView 
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/number_label"
+        android:text="@string/time_label"/>
+    
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/number_label"
+        android:layout_marginBottom="20dip"
+        />
+    
+    <TextView 
+        android:id="@+id/date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time_label"
+        android:text="@string/date_label"/>
+    
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/time_label"
+        android:layout_marginBottom="55dip"
+        />
+
+    <!-- Time Picker -->
+	<TextView 
+	    android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/days"
+		android:layout_marginLeft="20dip"
+		android:layout_alignLeft="@+id/day"
+		android:layout_above="@+id/day"/>
+    
+    <kankan.wheel.widget.WheelView 
+       	android:id="@+id/day"
+		android:layout_height="wrap_content"
+		android:layout_width="70dp"
+		android:layout_below="@+id/date"
+		android:layout_toLeftOf="@+id/hour"/>
+    
+	<TextView 
+	    android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/hours"
+		android:layout_marginLeft="15dip"
+		android:layout_alignLeft="@+id/hour"
+		android:layout_above="@+id/hour"/>
+	
+    <kankan.wheel.widget.WheelView 
+       	android:id="@+id/hour"
+		android:layout_height="wrap_content"
+		android:layout_width="70dp"
+		android:layout_centerHorizontal="true"
+		android:layout_marginLeft="10dip"
+		android:layout_marginRight="10dip"
+		android:layout_below="@+id/date"/>
+    
+	<TextView 
+	    android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/minutes"
+		android:layout_marginLeft="10dip"
+		android:layout_alignLeft="@+id/mins"
+		android:layout_alignBaseline="@+id/mins"
+		android:layout_above="@+id/mins"/>
+	
+	<kankan.wheel.widget.WheelView 
+	    android:id="@+id/mins"
+		android:layout_height="wrap_content"
+		android:layout_width="70dp"
+		android:layout_toRightOf="@+id/hour"
+		android:layout_below="@+id/date"/>
+	
+	<TextView 
+	    android:id="@+id/finalTime"
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content"
+	    android:layout_below="@+id/hour"
+	    android:layout_centerHorizontal="true"/>
+
+	<LinearLayout 
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="horizontal"
+	    android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true">
+	    
+	    <Button
+	        android:id="@+id/show_more_calls"
+	        android:layout_width="140dip"
+	        android:layout_height="wrap_content"
+	        android:onClick="showMoreCalls"
+	        android:layout_marginRight="20dip"
+	        android:text="@string/show_more_calls"/>
+	    
+	    <Button
+	        android:id="@+id/set_alarm_button"
+	        android:layout_width="140dip"
+	        android:layout_height="wrap_content"
+	        android:onClick="setAlarm"
+	        android:text="@string/start_alarm"/>
+	    
+	</LinearLayout>
 
 </RelativeLayout>

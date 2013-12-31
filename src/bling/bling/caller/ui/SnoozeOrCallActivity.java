@@ -11,6 +11,13 @@ import bling.bling.caller.R;
 import bling.bling.caller.manager.CallContainer;
 import bling.bling.caller.utils.Utils;
 
+/**
+ * Activity which is called after an alarm went off. It gives the possibility to
+ * either snooze, call or drop the desired call.
+ * 
+ * @author philipp
+ * 
+ */
 public class SnoozeOrCallActivity extends Activity {
 
 	private CallContainer _call;
@@ -32,13 +39,24 @@ public class SnoozeOrCallActivity extends Activity {
 	}
 
 	/**
+	 * Stop the current Alarm
+	 * 
+	 * @param view
+	 */
+	public void dropClicked(final View view) {
+		finish();
+	}
+
+	/**
 	 * Snooze the current alarm to the predefined snooze time
 	 * 
 	 * @param view
 	 */
 	public void snoozeClicked(final View view) {
 		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
-				.getExtras(), Utils.SNOOZE_TIME);
+				.getExtras(), System.currentTimeMillis() + Utils.SNOOZE_TIME);
+
+		finish();
 	}
 
 	/**

@@ -67,7 +67,6 @@ public class CallContainer {
 	 * @return called time in String representation
 	 */
 	public String getFormatedDate() {
-
 		return DateFormat.getDateTimeInstance().format(_callTime);
 	}
 }
