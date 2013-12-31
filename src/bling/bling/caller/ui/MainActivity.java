@@ -37,6 +37,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		ListView v = (ListView) this.findViewById(R.id.listView1);
 		v.setAdapter(_adapter);
 		v.setOnItemClickListener(this);
+
+		this.onItemClick(v, null, 0, 0);
 	}
 
 	protected void calledItemClicked(final View view) {
@@ -89,7 +91,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	protected void onActivityResult(final int requestCode,
 			final int resultCode, final Intent data) {
 
-		Toast.makeText(this, "Alarm was set successfully.", Toast.LENGTH_SHORT)
-				.show();
+		if (resultCode == RESULT_OK) {
+			Toast.makeText(this, "Alarm was set successfully.",
+					Toast.LENGTH_SHORT).show();
+			finish();
+		}
 	}
 }

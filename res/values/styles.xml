@@ -16,5 +16,15 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+    <style name="NumberWheel">
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">130dip</item>
+    </style>
 
 </resources>

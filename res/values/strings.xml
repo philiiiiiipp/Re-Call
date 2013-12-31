@@ -7,12 +7,13 @@
 
     <!-- Call Detail Activity -->
 	<string name="title_activity_call_detail">CallDetail</string>
+	<string name="call_detail_title">Create a reminder</string>
     <string name="start_alarm">Set Alarm</string>
     <string name="show_more_calls">Call History</string>
 	
-	<string name="minutes">Minutes</string>
-	<string name="hours">Hours</string>
-	<string name="days">Days</string>
+	<string name="minutes">min</string>
+	<string name="hours">hour</string>
+	<string name="days">day</string>
 	<string name="date_label">Date:</string>
 	<string name="number_label">Number:</string>
 	<string name="time_label">Time:</string>
@@ -22,6 +23,8 @@
 	<string name="alarm_missed_call">Reminder for missed call</string>
     <string name="alarm_outgoing_call">Reminder for outgoing call</string>
     <string name="alarm_incoming_call">Reminder for incoming call</string>
+    <string name="creation_description">Create a reminder in:</string>
+    <string name="alarm_starts_description">Alarm will be set to:</string>
     
     <!-- Snooze or Call Activity -->
     <string name="title_activity_snooze_or_call">SnoozeOrCallActivity</string>
@@ -35,6 +38,6 @@
     <string name="description_call_type_image">Image, displaying the call type, outgoing, incoming etc.</string>
     
     <!-- Colors -->
-    <color name="white">#FFFFFF</color>
+    <color name="white">#CCCCCC</color>
     
 </resources>

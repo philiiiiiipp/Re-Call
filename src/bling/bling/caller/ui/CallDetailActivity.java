@@ -9,7 +9,6 @@ import kankan.wheel.widget.adapters.NumericWheelAdapter;
 import android.app.Activity;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.provider.CallLog;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -43,29 +42,9 @@ public class CallDetailActivity extends Activity {
 
 		CallContainer cc = Utils.extractCallContainer(this.getIntent());
 
-		TextView t = (TextView) this.findViewById(R.id.description);
-		switch (cc.getCallType()) {
-		case CallLog.Calls.INCOMING_TYPE:
-			t.setText(this.getString(R.string.alarm_incoming_call));
-			break;
-		case CallLog.Calls.OUTGOING_TYPE:
-			t.setText(this.getString(R.string.alarm_outgoing_call));
-			break;
-		case CallLog.Calls.MISSED_TYPE:
-			t.setText(this.getString(R.string.alarm_missed_call));
-			break;
+		this.setTitle(R.string.call_detail_title);
 
-		default:
-			break;
-		}
-
-		if (cc.getName() != null) {
-			this.setTitle(cc.getName());
-		} else {
-			this.setTitle(cc.getPhoneNumber());
-		}
-
-		t = (TextView) this.findViewById(R.id.name);
+		TextView t = (TextView) this.findViewById(R.id.name);
 		if (cc.getName() != null) {
 			t.setText(cc.getName());
 		} else {
@@ -97,8 +76,8 @@ public class CallDetailActivity extends Activity {
 		_time.add(Calendar.MINUTE, 15);
 
 		final TextView finalTime = (TextView) this.findViewById(R.id.finalTime);
-		finalTime.setText(this.getString(R.string.alarm_set_to)
-				+ DateFormat.getDateTimeInstance().format(_time.getTime()));
+		finalTime.setText(DateFormat.getDateTimeInstance().format(
+				_time.getTime()));
 
 		hours.setCurrentItem(0);
 		mins.setCurrentItem(15);
@@ -113,10 +92,8 @@ public class CallDetailActivity extends Activity {
 				_time.add(Calendar.HOUR, hours.getCurrentItem());
 				_time.add(Calendar.MINUTE, mins.getCurrentItem());
 
-				finalTime.setText(CallDetailActivity.this
-						.getString(R.string.alarm_set_to)
-						+ DateFormat.getDateTimeInstance().format(
-								_time.getTime()));
+				finalTime.setText(DateFormat.getDateTimeInstance().format(
+						_time.getTime()));
 			}
 		};
 		days.addChangingListener(wheelListener);
@@ -130,7 +107,7 @@ public class CallDetailActivity extends Activity {
 	 * @param view
 	 */
 	public void showMoreCalls(final View view) {
-
+		finish();
 	}
 
 	/**
@@ -142,6 +119,7 @@ public class CallDetailActivity extends Activity {
 		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
 				.getExtras(), _time.getTimeInMillis());
 
+		this.setResult(RESULT_OK);
 		finish();
 	}
 

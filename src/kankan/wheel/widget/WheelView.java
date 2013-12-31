@@ -45,8 +45,8 @@ import bling.bling.caller.R;
 public class WheelView extends View {
 
 	/** Top and bottom shadows colors */
-	private static final int[] SHADOWS_COLORS = new int[] { 0xFF111111,
-			0x00AAAAAA, 0x00AAAAAA };
+	private static final int[] SHADOWS_COLORS = new int[] { 0x70FFFFFF,
+			0x40FFFFFF, 0x00FFFFFF };
 
 	/** Top and bottom items offset (to hide that) */
 	private static final int ITEM_OFFSET_PERCENT = 10;

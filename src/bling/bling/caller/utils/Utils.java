@@ -21,7 +21,7 @@ public class Utils {
 	/**
 	 * The snooze time, when it should be asked again
 	 */
-	public static long SNOOZE_TIME = 5000;
+	public static long SNOOZE_TIME = 1000 * 60 * 5;
 
 	/**
 	 * Extracts the called details from the given intent

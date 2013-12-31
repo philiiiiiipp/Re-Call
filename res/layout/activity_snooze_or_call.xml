@@ -47,7 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dip"
         android:textSize="40sp"
         android:text="@string/time_to_call"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -58,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeToCall"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dip"
         android:text="@string/dummy_number"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -68,6 +67,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameOrNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="25dip" />
 
 </RelativeLayout>

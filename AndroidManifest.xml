@@ -16,10 +16,12 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="bling.bling.caller.ui.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+		    android:configChanges="orientation"
+		    android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,11 +30,15 @@
         </activity>
         <activity
             android:name="bling.bling.caller.ui.CallDetailActivity"
-            android:label="@string/title_activity_call_detail" >
+            android:label="@string/title_activity_call_detail" 
+		    android:configChanges="orientation"
+		    android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="bling.bling.caller.ui.SnoozeOrCallActivity"
-            android:label="@string/title_activity_snooze_or_call" >
+            android:label="@string/title_activity_snooze_or_call"
+		    android:configChanges="orientation"
+		    android:screenOrientation="portrait" >
         </activity>
     </application>
 
