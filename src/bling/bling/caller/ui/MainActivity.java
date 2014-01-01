@@ -12,10 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 import bling.bling.caller.R;
 import bling.bling.caller.manager.CallManager;
-import bling.bling.caller.utils.IntentStringExtra;
+import bling.bling.caller.utils.Globals;
 
 /**
  * List activity for the whole call history
@@ -37,8 +36,6 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		ListView v = (ListView) this.findViewById(R.id.listView1);
 		v.setAdapter(_adapter);
 		v.setOnItemClickListener(this);
-
-		this.onItemClick(v, null, 0, 0);
 	}
 
 	protected void calledItemClicked(final View view) {
@@ -79,10 +76,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		Date callDate = new Date(cursor.getLong(dateID));
 
 		Intent intent = new Intent(this, CallDetailActivity.class);
-		intent.putExtra(IntentStringExtra.NUMBER_INTENT, calledNumber);
-		intent.putExtra(IntentStringExtra.NAME_INTENT, calledName);
-		intent.putExtra(IntentStringExtra.TYPE_INTENT, callType);
-		intent.putExtra(IntentStringExtra.DATE_INTENT, callDate.getTime());
+		intent.putExtra(Globals.NUMBER_INTENT, calledNumber);
+		intent.putExtra(Globals.NAME_INTENT, calledName);
+		intent.putExtra(Globals.TYPE_INTENT, callType);
+		intent.putExtra(Globals.DATE_INTENT, callDate.getTime());
 
 		this.startActivityForResult(intent, 1);
 	}
@@ -91,9 +88,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	protected void onActivityResult(final int requestCode,
 			final int resultCode, final Intent data) {
 
-		if (resultCode == RESULT_OK) {
-			Toast.makeText(this, "Alarm was set successfully.",
-					Toast.LENGTH_SHORT).show();
+		if (resultCode == Globals.RESULT_QUIT) {
 			finish();
 		}
 	}

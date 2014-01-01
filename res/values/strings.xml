@@ -30,12 +30,18 @@
     <string name="title_activity_snooze_or_call">SnoozeOrCallActivity</string>
     <string name="snooze_button">Snooze</string>
     <string name="call_button">Call</string>
+    <string name="silence_button">Silence</string>
     <string name="drop_button">Drop Call</string>
     <string name="time_to_call">Its time to call:</string>
     <string name="dummy_number">9999 999 99</string>
     
     <!-- Image description -->
     <string name="description_call_type_image">Image, displaying the call type, outgoing, incoming etc.</string>
+    
+    <!-- General -->
+    <string name="alarm_set_successfully">The alarm was set successfully</string>
+    <string name="alarm_snoozed">Will remind again in</string>
+    <string name="minutesLong">minutes</string>
     
     <!-- Colors -->
     <color name="white">#CCCCCC</color>

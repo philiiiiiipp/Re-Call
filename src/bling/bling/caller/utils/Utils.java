@@ -19,24 +19,22 @@ import bling.bling.caller.manager.CallContainer;
 public class Utils {
 
 	/**
-	 * The snooze time, when it should be asked again
-	 */
-	public static long SNOOZE_TIME = 1000 * 60 * 5;
-
-	/**
 	 * Extracts the called details from the given intent
 	 * 
 	 * @param intent
-	 * @return the filled call container
+	 * @return the filled call container or null of the intent does not contain
+	 *         call data
 	 */
 	public static CallContainer extractCallContainer(final Intent intent) {
-		String number = intent.getStringExtra(IntentStringExtra.NUMBER_INTENT);
-		String name = intent.getStringExtra(IntentStringExtra.NAME_INTENT);
-		int callType = intent.getIntExtra(IntentStringExtra.TYPE_INTENT,
+		String number = intent.getStringExtra(Globals.NUMBER_INTENT);
+		if (number == null)
+			return null;
+
+		String name = intent.getStringExtra(Globals.NAME_INTENT);
+		int callType = intent.getIntExtra(Globals.TYPE_INTENT,
 				CallLog.Calls.INCOMING_TYPE);
 
-		Date date = new Date(intent.getLongExtra(IntentStringExtra.DATE_INTENT,
-				0));
+		Date date = new Date(intent.getLongExtra(Globals.DATE_INTENT, 0));
 
 		return new CallContainer(number, name, callType, date);
 	}
@@ -67,5 +65,46 @@ public class Utils {
 				intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
 		a.set(AlarmManager.RTC, time, pIntent);
+	}
+
+	public static void setAlarm(final Context packageContext,
+			final Class<?> cls, final CallContainer callContainer,
+			final long time) {
+		AlarmManager a = (AlarmManager) packageContext
+				.getSystemService(Context.ALARM_SERVICE);
+
+		Intent intent = new Intent(packageContext, cls);
+
+		// Add all information e.g. called number, name etc.
+		fillIntentWith(callContainer, intent);
+
+		PendingIntent pIntent = PendingIntent.getActivity(packageContext, 0,
+				intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+		a.set(AlarmManager.RTC, time, pIntent);
+	}
+
+	/**
+	 * Fills the given intent with the call container
+	 * 
+	 * @param callContainer
+	 * @param intent
+	 */
+	public static void fillIntentWith(final CallContainer callContainer,
+			final Intent intent) {
+		intent.putExtra(Globals.NUMBER_INTENT, callContainer.getPhoneNumber());
+		intent.putExtra(Globals.NAME_INTENT, callContainer.getName());
+		intent.putExtra(Globals.TYPE_INTENT, callContainer.getCallType());
+		intent.putExtra(Globals.DATE_INTENT, callContainer.getCallTime());
+	}
+
+	/**
+	 * Convert the given milliseconds to seconds
+	 * 
+	 * @param ms
+	 * @return converted milliseconds
+	 */
+	public static long convertMStoSec(final long ms) {
+		return ms / 1000 / 60;
 	}
 }

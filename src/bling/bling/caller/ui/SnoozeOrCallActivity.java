@@ -1,14 +1,20 @@
 package bling.bling.caller.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import bling.bling.caller.R;
 import bling.bling.caller.manager.CallContainer;
+import bling.bling.caller.utils.Globals;
 import bling.bling.caller.utils.Utils;
 
 /**
@@ -20,7 +26,22 @@ import bling.bling.caller.utils.Utils;
  */
 public class SnoozeOrCallActivity extends Activity {
 
+	/**
+	 * The call which is getting reminded
+	 */
 	private CallContainer _call;
+
+	/**
+	 * The used alarm
+	 */
+	private Ringtone _alarmTone;
+
+	/**
+	 * Vibrator for the alarm :-)
+	 */
+	private Vibrator _alarmVibrator;
+
+	private static final long[] VIBRATION_PATTERN = { 0, 2000 };
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -36,6 +57,29 @@ public class SnoozeOrCallActivity extends Activity {
 		} else {
 			t.setText(_call.getPhoneNumber());
 		}
+		Uri notification = RingtoneManager
+				.getDefaultUri(RingtoneManager.TYPE_ALARM);
+		_alarmTone = RingtoneManager.getRingtone(getApplicationContext(),
+				notification);
+
+		_alarmTone.play();
+
+		_alarmVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		_alarmVibrator.vibrate(VIBRATION_PATTERN, 0);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	/**
+	 * Silence the currently playing alarm
+	 * 
+	 * @param view
+	 */
+	public void silenceAlarm(final View view) {
+		stopAlarm();
 	}
 
 	/**
@@ -44,6 +88,9 @@ public class SnoozeOrCallActivity extends Activity {
 	 * @param view
 	 */
 	public void dropClicked(final View view) {
+		stopAlarm();
+
+		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
@@ -53,9 +100,19 @@ public class SnoozeOrCallActivity extends Activity {
 	 * @param view
 	 */
 	public void snoozeClicked(final View view) {
-		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
-				.getExtras(), System.currentTimeMillis() + Utils.SNOOZE_TIME);
+		stopAlarm();
 
+		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
+				.getExtras(), System.currentTimeMillis() + Globals.SNOOZE_TIME);
+
+		Toast.makeText(
+				this,
+				this.getString(R.string.alarm_snoozed) + " "
+						+ Utils.convertMStoSec(Globals.SNOOZE_TIME) + " "
+						+ this.getString(R.string.minutesLong),
+				Toast.LENGTH_SHORT).show();
+
+		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
@@ -65,10 +122,13 @@ public class SnoozeOrCallActivity extends Activity {
 	 * @param view
 	 */
 	public void callClicked(final View view) {
+		stopAlarm();
+
 		Intent callIntent = new Intent(Intent.ACTION_CALL);
 		callIntent.setData(Uri.parse("tel:" + _call.getPhoneNumber()));
 		startActivity(callIntent);
 
+		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
@@ -79,4 +139,13 @@ public class SnoozeOrCallActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * Stop the currently playing alarm, if playing
+	 */
+	private void stopAlarm() {
+		if (_alarmTone.isPlaying())
+			_alarmTone.stop();
+
+		_alarmVibrator.cancel();
+	}
 }

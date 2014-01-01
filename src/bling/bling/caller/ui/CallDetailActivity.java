@@ -13,8 +13,11 @@ import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 import bling.bling.caller.R;
 import bling.bling.caller.manager.CallContainer;
+import bling.bling.caller.manager.CallManager;
+import bling.bling.caller.utils.Globals;
 import bling.bling.caller.utils.Utils;
 
 /**
@@ -28,7 +31,12 @@ public class CallDetailActivity extends Activity {
 	/**
 	 * The alarm time
 	 */
-	Calendar _time;
+	private Calendar _time;
+
+	/**
+	 * The currently shown call container
+	 */
+	private CallContainer _activeCallContainer;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -40,25 +48,27 @@ public class CallDetailActivity extends Activity {
 
 		setContentView(R.layout.activity_call_detail);
 
-		CallContainer cc = Utils.extractCallContainer(this.getIntent());
+		_activeCallContainer = getCallContainer();
 
 		this.setTitle(R.string.call_detail_title);
 
 		TextView t = (TextView) this.findViewById(R.id.name);
-		if (cc.getName() != null) {
-			t.setText(cc.getName());
+		if (_activeCallContainer.getName() != null) {
+			t.setText(_activeCallContainer.getName());
 		} else {
 			t.setText("-");
 		}
 
 		t = (TextView) this.findViewById(R.id.number);
-		t.setText(cc.getPhoneNumber());
+		t.setText(_activeCallContainer.getPhoneNumber());
 
 		t = (TextView) this.findViewById(R.id.time);
-		t.setText(DateFormat.getTimeInstance().format(cc.getCallTime()));
+		t.setText(DateFormat.getTimeInstance().format(
+				_activeCallContainer.getCallTime()));
 
 		t = (TextView) this.findViewById(R.id.date);
-		t.setText(DateFormat.getDateInstance().format(cc.getCallTime()));
+		t.setText(DateFormat.getDateInstance().format(
+				_activeCallContainer.getCallTime()));
 
 		final WheelView days = (WheelView) findViewById(R.id.day);
 		days.setViewAdapter(new NumericWheelAdapter(this, 0, 999));
@@ -101,6 +111,15 @@ public class CallDetailActivity extends Activity {
 		mins.addChangingListener(wheelListener);
 	}
 
+	private CallContainer getCallContainer() {
+		CallContainer cc = Utils.extractCallContainer(this.getIntent());
+
+		if (cc != null)
+			return cc;
+
+		return CallManager.getLastCalled(this);
+	}
+
 	/**
 	 * Show the call history
 	 * 
@@ -116,10 +135,14 @@ public class CallDetailActivity extends Activity {
 	 * @param view
 	 */
 	public void setAlarm(final View view) {
-		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
-				.getExtras(), _time.getTimeInMillis());
+		Utils.setAlarm(this, SnoozeOrCallActivity.class, _activeCallContainer,
+				_time.getTimeInMillis());
 
-		this.setResult(RESULT_OK);
+		// Verify the user that the alarm was set.
+		Toast.makeText(this, this.getString(R.string.alarm_set_successfully),
+				Toast.LENGTH_SHORT).show();
+
+		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 

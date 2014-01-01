@@ -2,13 +2,13 @@ package bling.bling.caller.manager;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
+import android.provider.CallLog.Calls;
 
 public class CallManager {
 
@@ -53,14 +53,14 @@ public class CallManager {
 	}
 
 	/**
-	 * Start an async call to get the last maxCalls calls
+	 * Get last called call container
 	 * 
 	 * @param context
 	 * @param maxCalls
-	 * @return the last maxCalls calls in a list
+	 * @return the last called user
 	 */
-	public void getCallData(final Context context, final int maxCalls) {
-		List<CallContainer> callData = new LinkedList<CallContainer>();
+	public static CallContainer getLastCalled(final Context context) {
+		CallContainer result;
 
 		Cursor managedCursor = context.getContentResolver().query(
 				CallLog.Calls.CONTENT_URI, QUERY_FIELDS, null, null,
@@ -71,18 +71,20 @@ public class CallManager {
 		int nameID = managedCursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
 		int dateID = managedCursor.getColumnIndex(CallLog.Calls.DATE);
 
-		while (managedCursor.moveToNext()) {
-			String calledNumber = managedCursor.getString(numberID);
-			String calledName = managedCursor.getString(nameID);
-			int callType = managedCursor.getInt(typeID);
-			Date callDate = new Date(managedCursor.getLong(dateID));
+		if (!managedCursor.moveToFirst())
+			return new CallContainer("No Entry", "No Entry", Calls.MISSED_TYPE,
+					new Date());
 
-			callData.add(new CallContainer(calledNumber, calledName, callType,
-					callDate));
-		}
+		String calledNumber = managedCursor.getString(numberID);
+		String calledName = managedCursor.getString(nameID);
+		int callType = managedCursor.getInt(typeID);
+		Date callDate = new Date(managedCursor.getLong(dateID));
+
+		result = new CallContainer(calledNumber, calledName, callType, callDate);
+
 		managedCursor.close();
 
-		sendCallData(callData);
+		return result;
 	}
 
 	/**
