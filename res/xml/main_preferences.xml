@@ -8,4 +8,10 @@
         android:title="@string/snooze_time_preferences"
         android:inputType="number"/>
     
+<!--     <EditTextPreference  -->
+<!--         android:key="max_alarm_duration_preference" -->
+<!--         android:defaultValue="2" -->
+<!--         android:title="@string/max_alarm_duration_preference" -->
+<!--         android:inputType="number"/> -->
+    
 </PreferenceScreen>

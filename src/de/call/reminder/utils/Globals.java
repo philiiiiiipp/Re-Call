@@ -36,6 +36,11 @@ public class Globals {
 	public static long DEFAULT_SNOOZE_TIME = 5;
 
 	/**
+	 * The default maximum alarm duration
+	 */
+	public static long DEFAULT_MAX_ALARM_DURATION = 2;
+
+	/**
 	 * Quit the app after activity is finished
 	 */
 	public static int RESULT_QUIT = 30041987;
@@ -48,4 +53,9 @@ public class Globals {
 	 * Preference field for the snooze time
 	 */
 	public static final String SNOOZE_TIME_PREFERENCE = "snooze_time_preference";
+
+	/**
+	 * Preference field for the maximum alarm duration
+	 */
+	public static final String MAX_ALARM_TIME_PREFERENCE = "max_alarm_duration_preference";
 }

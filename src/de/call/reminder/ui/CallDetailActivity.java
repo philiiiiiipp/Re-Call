@@ -40,10 +40,6 @@ public class CallDetailActivity extends ActivityWithSettings {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// enable dithering
-		// getWindow().setFormat(PixelFormat.RGBA_8888);
-		// getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
-
 		setContentView(R.layout.activity_call_detail);
 		_activeCallContainer = getCallContainer();
 
@@ -63,8 +59,6 @@ public class CallDetailActivity extends ActivityWithSettings {
 		// set current time
 		_time = Calendar.getInstance();
 		_time.add(Calendar.MINUTE, 15);
-
-		// AnalogClock clock = (AnalogClock) this.findViewById(R.id.clock);
 
 		final TextView finalTime = (TextView) this.findViewById(R.id.finalTime);
 		finalTime.setText(DateFormat.getDateTimeInstance().format(

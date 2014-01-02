@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import de.call.reminder.R;
 
-public class DatabaseAdapter extends CursorAdapter {
+public class HistoryDBAdapter extends CursorAdapter {
 
 	/**
 	 * Adapter to bind the call history to a ListView
@@ -23,7 +23,7 @@ public class DatabaseAdapter extends CursorAdapter {
 	 * @param c
 	 * @param autoRequery
 	 */
-	public DatabaseAdapter(final Context context, final Cursor c,
+	public HistoryDBAdapter(final Context context, final Cursor c,
 			final boolean autoRequery) {
 		super(context, c, autoRequery);
 	}

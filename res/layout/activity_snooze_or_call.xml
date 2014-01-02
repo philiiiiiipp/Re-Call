@@ -23,6 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dip"
             android:onClick="dropClicked"
+	        android:background="@drawable/green_button"
+	        android:textStyle="bold"
             android:text="@string/drop_button" />
 
         <Button
@@ -30,6 +32,8 @@
             android:layout_width="120dip"
             android:layout_height="wrap_content"
             android:onClick="snoozeClicked"
+	        android:background="@drawable/green_button"
+	        android:textStyle="bold"
             android:text="@string/snooze_button" />
     </LinearLayout>
     
@@ -45,12 +49,16 @@
 	        android:layout_height="wrap_content"
 	        android:onClick="silenceAlarm"
 	        android:layout_marginRight="20dip"
+	        android:background="@drawable/green_button"
+	        android:textStyle="bold"
 	        android:text="@string/silence_button" />
 	        
 	    <Button
 	        android:layout_width="120dip"
 	        android:layout_height="wrap_content"
 	        android:onClick="callClicked"
+	        android:background="@drawable/green_button"
+	        android:textStyle="bold"
 	        android:text="@string/call_button" />
     
     </LinearLayout>

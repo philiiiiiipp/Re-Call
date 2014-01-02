@@ -42,7 +42,10 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 	 */
 	private Vibrator _alarmVibrator;
 
-	private static final long[] VIBRATION_PATTERN = { 0, 2000 };
+	/**
+	 * The vibration pattern, 2000ms vibration, 1000ms pause
+	 */
+	private static final long[] VIBRATION_PATTERN = { 2000, 1000 };
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {

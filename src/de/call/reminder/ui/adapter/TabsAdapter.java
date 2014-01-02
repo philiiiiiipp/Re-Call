@@ -6,6 +6,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import de.call.reminder.ui.fragment.CallHistoryFragment;
 import de.call.reminder.ui.fragment.ContactsFragment;
 
+/**
+ * Tabs adapter for the Contacts page
+ * 
+ * @author philipp
+ * 
+ */
 public class TabsAdapter extends FragmentPagerAdapter {
 
 	public TabsAdapter(final FragmentManager fm) {

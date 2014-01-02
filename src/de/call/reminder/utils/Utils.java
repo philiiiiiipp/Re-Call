@@ -2,13 +2,13 @@ package de.call.reminder.utils;
 
 import java.util.Date;
 
-import de.call.reminder.manager.CallContainer;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CallLog;
+import de.call.reminder.manager.CallContainer;
 
 /**
  * Utils collection
@@ -53,30 +53,51 @@ public class Utils {
 	 */
 	public static void setAlarm(final Context packageContext,
 			final Class<?> cls, final Bundle extras, final long time) {
-		AlarmManager a = (AlarmManager) packageContext
-				.getSystemService(Context.ALARM_SERVICE);
-
 		Intent intent = new Intent(packageContext, cls);
 
 		// Add all information e.g. called number, name etc.
 		intent.putExtras(extras);
 
-		PendingIntent pIntent = PendingIntent.getActivity(packageContext, 0,
-				intent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-		a.set(AlarmManager.RTC, time, pIntent);
+		setAlarm(packageContext, intent, time);
 	}
 
+	/**
+	 * Set or update the alarm
+	 * 
+	 * @param packageContext
+	 *            The activity context
+	 * @param cls
+	 *            The class to get called when the alarm fires
+	 * @param callContainer
+	 *            The call container used for the alarm
+	 * @param time
+	 *            The time in ms after which the alarm should fire
+	 */
 	public static void setAlarm(final Context packageContext,
 			final Class<?> cls, final CallContainer callContainer,
 			final long time) {
-		AlarmManager a = (AlarmManager) packageContext
-				.getSystemService(Context.ALARM_SERVICE);
-
 		Intent intent = new Intent(packageContext, cls);
 
 		// Add all information e.g. called number, name etc.
 		fillIntentWith(callContainer, intent);
+
+		setAlarm(packageContext, intent, time);
+	}
+
+	/**
+	 * Actually register the alarm
+	 * 
+	 * @param packageContext
+	 *            The current context
+	 * @param intent
+	 *            The intent which should be fired
+	 * @param time
+	 *            The time after which it should go off
+	 */
+	private static void setAlarm(final Context packageContext,
+			final Intent intent, final long time) {
+		AlarmManager a = (AlarmManager) packageContext
+				.getSystemService(Context.ALARM_SERVICE);
 
 		PendingIntent pIntent = PendingIntent.getActivity(packageContext, 0,
 				intent, PendingIntent.FLAG_CANCEL_CURRENT);

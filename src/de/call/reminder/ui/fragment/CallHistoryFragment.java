@@ -15,7 +15,7 @@ import android.widget.ListView;
 import de.call.reminder.R;
 import de.call.reminder.manager.CallManager;
 import de.call.reminder.ui.CallDetailActivity;
-import de.call.reminder.ui.adapter.DatabaseAdapter;
+import de.call.reminder.ui.adapter.HistoryDBAdapter;
 import de.call.reminder.utils.Globals;
 
 public class CallHistoryFragment extends ListFragment {
@@ -23,7 +23,7 @@ public class CallHistoryFragment extends ListFragment {
 	/**
 	 * The database adapter for the call history
 	 */
-	private DatabaseAdapter _adapter;
+	private HistoryDBAdapter _adapter;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
@@ -32,7 +32,7 @@ public class CallHistoryFragment extends ListFragment {
 		View rootView = inflater.inflate(R.layout.call_history, container,
 				false);
 
-		_adapter = new DatabaseAdapter(this.getActivity(),
+		_adapter = new HistoryDBAdapter(this.getActivity(),
 				CallManager.getHistoryCursor(this.getActivity()), true);
 		this.setListAdapter(_adapter);
 
