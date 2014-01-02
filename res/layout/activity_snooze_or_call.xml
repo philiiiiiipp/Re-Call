@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SnoozeOrCallActivity" >
+    android:background="@drawable/background"
+    tools:context="de.call.reminder.ui.SnoozeOrCallActivity" >
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -39,18 +40,18 @@
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true">
     
-    <Button
-        android:layout_width="120dip"
-        android:layout_height="wrap_content"
-        android:onClick="silenceAlarm"
-        android:layout_marginRight="20dip"
-        android:text="@string/silence_button" />
-        
-    <Button
-        android:layout_width="120dip"
-        android:layout_height="wrap_content"
-        android:onClick="callClicked"
-        android:text="@string/call_button" />
+	    <Button
+	        android:layout_width="120dip"
+	        android:layout_height="wrap_content"
+	        android:onClick="silenceAlarm"
+	        android:layout_marginRight="20dip"
+	        android:text="@string/silence_button" />
+	        
+	    <Button
+	        android:layout_width="120dip"
+	        android:layout_height="wrap_content"
+	        android:onClick="callClicked"
+	        android:text="@string/call_button" />
     
     </LinearLayout>
     
@@ -60,9 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        style="@style/CodeFontLarge"
         android:text="@string/time_to_call"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/nameOrNumber"
@@ -71,8 +72,10 @@
         android:layout_below="@+id/timeToCall"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dip"
-        android:text="@string/dummy_number"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:singleLine="true"
+		android:textStyle="italic"
+        style="@style/CodeFontLarge"
+        android:text="@string/dummy_number"/>
 
     <AnalogClock
         android:id="@+id/currentClock"

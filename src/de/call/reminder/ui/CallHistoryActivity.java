@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import bling.bling.caller.R;
+import de.call.reminder.R;
 import de.call.reminder.manager.CallManager;
 import de.call.reminder.ui.adapter.DatabaseAdapter;
 import de.call.reminder.ui.extension.ActivityWithSettings;

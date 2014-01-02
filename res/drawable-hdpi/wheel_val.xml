@@ -25,5 +25,5 @@
 		android:endColor="#00EEEEEE"
 		android:angle="90" />
 
-	<stroke android:width="1dp" android:color="#B7F259" /> 
+	<stroke android:width="1dp" android:color="#81A594" /> 
 </shape>

@@ -7,113 +7,62 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background"
-    tools:context=".CallDetailActivity" >
+    tools:context="de.call.reminder.ui.CallDetailActivity" >
     
     <TextView 
         android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/CodeFont"
+        style="@style/CodeFontLarge"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="5dip"
         android:text="@string/name_label"/>
     
     <TextView
         android:id="@+id/name"
-        android:maxLines="1"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"     
+        android:focusable="true"
+        android:focusableInTouchMode="true"     
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/CodeFont"
+        style="@style/CodeFontLarge"
 		android:layout_toRightOf="@id/name_label"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/number"
-        android:layout_marginBottom="20dip"
         android:text="@string/dummy_number"
         />
-    
-    <TextView 
-        android:id="@+id/number_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name_label"
-        android:layout_marginRight="10dip"
-        android:text="@string/number_label"/>
-    
-    <TextView
-        android:id="@+id/number"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name_label"
-        android:layout_toRightOf="@id/number_label"
-        android:layout_marginBottom="20dip"
-        android:text="@string/dummy_number"
-        />
-    
-    <TextView 
-        android:id="@+id/time_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/number_label"
-        android:text="@string/time_label"/>
-    
-    <TextView
-        android:id="@+id/time"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_below="@id/number_label"
-        android:layout_marginBottom="20dip"
-        android:text="@string/dummy_number"
-        />
-    
-    <TextView 
-        android:id="@+id/date_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time_label"
-        android:text="@string/date_label"/>
-    
-    <TextView
-        android:id="@+id/date"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_below="@id/time_label"
-        android:text="@string/dummy_number"
-        />
-    
     
     <TextView 
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_below="@id/date"
+		android:layout_above="@+id/time_picker"
         android:text="@string/creation_description"
-        style="@style/CodeFont"
+        style="@style/CodeFontMedium"
         android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="10dip"
-        android:layout_marginTop="10dip"/>
+        android:layout_marginBottom="10dip"/>
 
     <!-- Time Picker -->
     <RelativeLayout 
         android:id="@+id/time_picker"
 	    android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:layout_below="@+id/description"
-		android:layout_centerHorizontal="true">
+		android:layout_centerInParent="true">
 		
 	    <kankan.wheel.widget.WheelView 
 	       	android:id="@+id/day"
 			style="@style/NumberWheel"
+			android:layout_marginRight="2dip"
 			android:layout_alignParentLeft="true"/>
 	    
 		<TextView 
 		    android:id="@+id/day_label"
 		    android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
+       		style="@style/CodeFontSmall"
 			android:text="@string/days"
 			android:layout_centerVertical="true"
 			android:layout_toRightOf="@+id/day"/>
@@ -129,6 +78,7 @@
 		    android:id="@+id/hours_label"
 		    android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
+       		style="@style/CodeFontSmall"
 			android:text="@string/hours"
 			android:layout_centerVertical="true"
 			android:layout_toRightOf="@+id/hour"/>
@@ -136,12 +86,15 @@
 		<kankan.wheel.widget.WheelView 
 		    android:id="@+id/mins"
 			style="@style/NumberWheel"
+			android:layout_marginLeft="2dip"
+			android:layout_marginRight="2dip"
 			android:layout_toRightOf="@+id/hours_label"/>
 		
 		<TextView 
 		    android:id="@+id/minutes_label"
 		    android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
+       		style="@style/CodeFontSmall"
 			android:text="@string/minutes"
 			android:layout_centerVertical="true"
 			android:layout_toRightOf="@+id/mins"/>
@@ -151,16 +104,20 @@
         android:id="@+id/alarm_starts_label"
 	    android:layout_height="wrap_content"
 	    android:layout_width="wrap_content"
+        style="@style/CodeFontSmall"
+        android:textColor="#81A594"
 	    android:text="@string/alarm_starts_description"
-	    android:layout_below="@+id/time_picker"
-	    android:layout_marginTop="15dip"
+	    android:layout_above="@+id/finalTime"
 	    android:layout_centerHorizontal="true"/>
     
 	<TextView 
 	    android:id="@+id/finalTime"
+        style="@style/CodeFontSmall"
+        android:textColor="#81A594"
 	    android:layout_height="wrap_content"
 	    android:layout_width="wrap_content"
-	    android:layout_below="@+id/alarm_starts_label"
+	    android:layout_above="@+id/description"
+	    android:layout_marginBottom="15dip"
 	    android:layout_centerHorizontal="true"/>
 
 	<LinearLayout 

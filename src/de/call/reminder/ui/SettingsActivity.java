@@ -7,7 +7,7 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import bling.bling.caller.R;
+import de.call.reminder.R;
 
 /**
  * Settings activity. Heavily deprecated due to compatibility to android 2.3-.

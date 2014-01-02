@@ -12,7 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import bling.bling.caller.R;
+import de.call.reminder.R;
 import de.call.reminder.manager.CallContainer;
 import de.call.reminder.ui.extension.ActivityWithSettings;
 import de.call.reminder.utils.Globals;

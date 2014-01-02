@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bling.bling.caller.R;
+import de.call.reminder.R;
 
 public class DatabaseAdapter extends CursorAdapter {
 

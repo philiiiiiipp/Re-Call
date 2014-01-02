@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import bling.bling.caller.R;
+import de.call.reminder.R;
 import de.call.reminder.manager.CallContainer;
 import de.call.reminder.manager.CallManager;
 import de.call.reminder.ui.extension.ActivityWithSettings;
@@ -45,8 +45,9 @@ public class CallDetailActivity extends ActivityWithSettings {
 		// getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
 
 		setContentView(R.layout.activity_call_detail);
-
 		_activeCallContainer = getCallContainer();
+
+		System.out.println(_activeCallContainer.getName());
 
 		doLayout();
 
@@ -64,6 +65,8 @@ public class CallDetailActivity extends ActivityWithSettings {
 		// set current time
 		_time = Calendar.getInstance();
 		_time.add(Calendar.MINUTE, 15);
+
+		// AnalogClock clock = (AnalogClock) this.findViewById(R.id.clock);
 
 		final TextView finalTime = (TextView) this.findViewById(R.id.finalTime);
 		finalTime.setText(DateFormat.getDateTimeInstance().format(
@@ -99,19 +102,8 @@ public class CallDetailActivity extends ActivityWithSettings {
 		if (_activeCallContainer.getName() != null) {
 			t.setText(_activeCallContainer.getName());
 		} else {
-			t.setText("-");
+			t.setText(_activeCallContainer.getPhoneNumber());
 		}
-
-		t = (TextView) this.findViewById(R.id.number);
-		t.setText(_activeCallContainer.getPhoneNumber());
-
-		t = (TextView) this.findViewById(R.id.time);
-		t.setText(DateFormat.getTimeInstance().format(
-				_activeCallContainer.getCallTime()));
-
-		t = (TextView) this.findViewById(R.id.date);
-		t.setText(DateFormat.getDateInstance().format(
-				_activeCallContainer.getCallTime()));
 	}
 
 	/**

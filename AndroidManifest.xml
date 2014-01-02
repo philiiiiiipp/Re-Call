@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bling.bling.caller"
+    package="de.call.reminder"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -19,13 +19,13 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.call.reminder.ui.CallHistoryActivity"
+            android:name=".ui.CallHistoryActivity"
             android:label="@string/title_activity_call_history"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="de.call.reminder.ui.CallDetailActivity"
+            android:name=".ui.CallDetailActivity"
             android:label="@string/title_activity_call_detail"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
@@ -36,16 +36,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.call.reminder.ui.SnoozeOrCallActivity"
+            android:name=".ui.SnoozeOrCallActivity"
             android:label="@string/title_activity_snooze_or_call"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="de.call.reminder.ui.SettingsActivity"
+            android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
