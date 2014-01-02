@@ -3,10 +3,6 @@ package de.call.reminder.ui;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-import de.call.reminder.manager.CallContainer;
-import de.call.reminder.manager.CallManager;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Utils;
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
@@ -17,6 +13,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import bling.bling.caller.R;
+import de.call.reminder.manager.CallContainer;
+import de.call.reminder.manager.CallManager;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Utils;
 
 /**
  * Activity to create an alarm

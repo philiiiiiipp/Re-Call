@@ -1,11 +1,11 @@
 package de.call.reminder.ui.extension;
 
-import de.call.reminder.ui.SettingsActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import bling.bling.caller.R;
+import de.call.reminder.ui.SettingsActivity;
 
 /**
  * Wrapper class to provide basic functionality

@@ -2,10 +2,6 @@ package de.call.reminder.ui;
 
 import java.util.Date;
 
-import de.call.reminder.manager.CallManager;
-import de.call.reminder.ui.adapter.DatabaseAdapter;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Globals;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import bling.bling.caller.R;
+import de.call.reminder.manager.CallManager;
+import de.call.reminder.ui.adapter.DatabaseAdapter;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Globals;
 
 /**
  * List activity for the whole call history

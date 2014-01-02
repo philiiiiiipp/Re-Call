@@ -1,9 +1,5 @@
 package de.call.reminder.ui;
 
-import de.call.reminder.manager.CallContainer;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Globals;
-import de.call.reminder.utils.Utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +13,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import bling.bling.caller.R;
+import de.call.reminder.manager.CallContainer;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Globals;
+import de.call.reminder.utils.Utils;
 
 /**
  * Activity which is called after an alarm went off. It gives the possibility to
