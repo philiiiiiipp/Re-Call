@@ -22,7 +22,8 @@
             android:name=".ui.CallHistoryActivity"
             android:label="@string/title_activity_call_history"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/SupportTheme" >
         </activity>
         <activity
             android:name=".ui.CallDetailActivity"

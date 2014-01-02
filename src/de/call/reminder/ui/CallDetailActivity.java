@@ -47,8 +47,6 @@ public class CallDetailActivity extends ActivityWithSettings {
 		setContentView(R.layout.activity_call_detail);
 		_activeCallContainer = getCallContainer();
 
-		System.out.println(_activeCallContainer.getName());
-
 		doLayout();
 
 		final WheelView days = (WheelView) findViewById(R.id.day);

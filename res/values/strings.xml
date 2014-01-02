@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-	<string name="app_name">BlingBlingCaller</string>
+	<string name="app_name">Call Reminder</string>
     
     <!-- Call History Activity -->
-    <string name="title_activity_call_history">Call History</string>
+    <string name="title_activity_call_history">Contacts</string>
     <string name="action_settings">Settings</string>
+    
+    <string-array name="history_pages">
+        <item>History</item>
+        <item>Contacts</item>
+	</string-array>
 
     <!-- Call Detail Activity -->
     <string name="title_activity_call_detail">Create a reminder</string>
     <string name="start_alarm">Set Alarm</string>
-    <string name="show_more_calls">Call History</string>
+    <string name="show_more_calls">Contacts</string>
     <string name="minutes">min</string>
     <string name="hours">hour</string>
     <string name="days">day</string>

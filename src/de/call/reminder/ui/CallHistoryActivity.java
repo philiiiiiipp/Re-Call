@@ -1,21 +1,14 @@
 package de.call.reminder.ui;
 
-import java.util.Date;
-
-import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.CallLog;
-import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBar.TabListener;
 import de.call.reminder.R;
-import de.call.reminder.manager.CallManager;
-import de.call.reminder.ui.adapter.DatabaseAdapter;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Globals;
+import de.call.reminder.ui.adapter.TabsAdapter;
+import de.call.reminder.ui.extension.ActionBarActivityWithSettings;
 
 /**
  * List activity for the whole call history
@@ -23,8 +16,8 @@ import de.call.reminder.utils.Globals;
  * @author philipp
  * 
  */
-public class CallHistoryActivity extends ActivityWithSettings implements
-		OnItemClickListener {
+public class CallHistoryActivity extends ActionBarActivityWithSettings
+		implements TabListener {
 
 	/**
 	 * Request code
@@ -32,52 +25,74 @@ public class CallHistoryActivity extends ActivityWithSettings implements
 	public static final int REQUEST_CODE = 27051990;
 
 	/**
-	 * The database adapter for the call history
+	 * The view pager
 	 */
-	private DatabaseAdapter _adapter;
+	private ViewPager _viewPager;
+
+	/**
+	 * The tab adapter
+	 */
+	private TabsAdapter _tabAdapter;
+
+	/**
+	 * The action bar
+	 */
+	private ActionBar _actionBar;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		_adapter = new DatabaseAdapter(this, CallManager.getCursor(this), true);
+		_viewPager = (ViewPager) findViewById(R.id.pager);
+		_actionBar = this.getSupportActionBar();
+		_tabAdapter = new TabsAdapter(getSupportFragmentManager());
 
-		ListView v = (ListView) this.findViewById(R.id.listView1);
-		v.setAdapter(_adapter);
-		v.setOnItemClickListener(this);
+		_viewPager.setAdapter(_tabAdapter);
+		_actionBar.setHomeButtonEnabled(false);
+		_actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		String[] pages = this.getResources().getStringArray(
+				R.array.history_pages);
+
+		// Adding Tabs
+		for (String tab_name : pages) {
+			_actionBar.addTab(_actionBar.newTab().setText(tab_name)
+					.setTabListener(this));
+		}
+
+		_viewPager
+				.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+					@Override
+					public void onPageSelected(final int position) {
+						_actionBar.setSelectedNavigationItem(position);
+					}
+
+					@Override
+					public void onPageScrolled(final int arg0,
+							final float arg1, final int arg2) {
+					}
+
+					@Override
+					public void onPageScrollStateChanged(final int arg0) {
+					}
+				});
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(final Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	public void onTabReselected(final Tab arg0, final FragmentTransaction arg1) {
+
 	}
 
 	@Override
-	public void onItemClick(final AdapterView<?> arg0, final View arg1,
-			final int position, final long id) {
+	public void onTabSelected(final Tab tab, final FragmentTransaction arg1) {
+		_viewPager.setCurrentItem(tab.getPosition());
 
-		Cursor cursor = (Cursor) _adapter.getItem(position);
+	}
 
-		int numberID = cursor.getColumnIndex(CallLog.Calls.NUMBER);
-		int typeID = cursor.getColumnIndex(CallLog.Calls.TYPE);
-		int nameID = cursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
-		int dateID = cursor.getColumnIndex(CallLog.Calls.DATE);
+	@Override
+	public void onTabUnselected(final Tab arg0, final FragmentTransaction arg1) {
 
-		String calledNumber = cursor.getString(numberID);
-		String calledName = cursor.getString(nameID);
-		int callType = cursor.getInt(typeID);
-		Date callDate = new Date(cursor.getLong(dateID));
-
-		Intent intent = new Intent(this, CallDetailActivity.class);
-		intent.putExtra(Globals.NUMBER_INTENT, calledNumber);
-		intent.putExtra(Globals.NAME_INTENT, calledName);
-		intent.putExtra(Globals.TYPE_INTENT, callType);
-		intent.putExtra(Globals.DATE_INTENT, callDate.getTime());
-
-		setResult(RESULT_OK, intent);
-		finish();
 	}
 }
