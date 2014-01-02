@@ -1,24 +1,22 @@
-package bling.bling.caller.ui;
+package de.call.reminder.ui;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 
+import de.call.reminder.manager.CallContainer;
+import de.call.reminder.manager.CallManager;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Utils;
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
 import android.app.Activity;
-import android.graphics.PixelFormat;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import bling.bling.caller.R;
-import bling.bling.caller.manager.CallContainer;
-import bling.bling.caller.manager.CallManager;
-import bling.bling.caller.utils.Globals;
-import bling.bling.caller.utils.Utils;
 
 /**
  * Activity to create an alarm
@@ -26,7 +24,7 @@ import bling.bling.caller.utils.Utils;
  * @author philipp
  * 
  */
-public class CallDetailActivity extends Activity {
+public class CallDetailActivity extends ActivityWithSettings {
 
 	/**
 	 * The alarm time
@@ -43,32 +41,14 @@ public class CallDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// enable dithering
-		getWindow().setFormat(PixelFormat.RGBA_8888);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
+		// getWindow().setFormat(PixelFormat.RGBA_8888);
+		// getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
 
 		setContentView(R.layout.activity_call_detail);
 
 		_activeCallContainer = getCallContainer();
 
-		this.setTitle(R.string.call_detail_title);
-
-		TextView t = (TextView) this.findViewById(R.id.name);
-		if (_activeCallContainer.getName() != null) {
-			t.setText(_activeCallContainer.getName());
-		} else {
-			t.setText("-");
-		}
-
-		t = (TextView) this.findViewById(R.id.number);
-		t.setText(_activeCallContainer.getPhoneNumber());
-
-		t = (TextView) this.findViewById(R.id.time);
-		t.setText(DateFormat.getTimeInstance().format(
-				_activeCallContainer.getCallTime()));
-
-		t = (TextView) this.findViewById(R.id.date);
-		t.setText(DateFormat.getDateInstance().format(
-				_activeCallContainer.getCallTime()));
+		doLayout();
 
 		final WheelView days = (WheelView) findViewById(R.id.day);
 		days.setViewAdapter(new NumericWheelAdapter(this, 0, 999));
@@ -111,6 +91,35 @@ public class CallDetailActivity extends Activity {
 		mins.addChangingListener(wheelListener);
 	}
 
+	/**
+	 * Fill all fields with the data from the active call container
+	 */
+	private void doLayout() {
+		TextView t = (TextView) this.findViewById(R.id.name);
+		if (_activeCallContainer.getName() != null) {
+			t.setText(_activeCallContainer.getName());
+		} else {
+			t.setText("-");
+		}
+
+		t = (TextView) this.findViewById(R.id.number);
+		t.setText(_activeCallContainer.getPhoneNumber());
+
+		t = (TextView) this.findViewById(R.id.time);
+		t.setText(DateFormat.getTimeInstance().format(
+				_activeCallContainer.getCallTime()));
+
+		t = (TextView) this.findViewById(R.id.date);
+		t.setText(DateFormat.getDateInstance().format(
+				_activeCallContainer.getCallTime()));
+	}
+
+	/**
+	 * Get the currently used call container, either from intent or from the
+	 * call history
+	 * 
+	 * @return the correct call container
+	 */
 	private CallContainer getCallContainer() {
 		CallContainer cc = Utils.extractCallContainer(this.getIntent());
 
@@ -126,7 +135,9 @@ public class CallDetailActivity extends Activity {
 	 * @param view
 	 */
 	public void showMoreCalls(final View view) {
-		finish();
+		this.startActivityForResult(
+				new Intent(this, CallHistoryActivity.class),
+				CallHistoryActivity.REQUEST_CODE);
 	}
 
 	/**
@@ -142,15 +153,22 @@ public class CallDetailActivity extends Activity {
 		Toast.makeText(this, this.getString(R.string.alarm_set_successfully),
 				Toast.LENGTH_SHORT).show();
 
-		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(final Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.call_detail, menu);
-		return true;
-	}
+	public void onActivityResult(final int requestCode, final int resultCode,
+			final Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 
+		switch (requestCode) {
+		case (CallHistoryActivity.REQUEST_CODE): {
+			if (resultCode == Activity.RESULT_OK) {
+				_activeCallContainer = Utils.extractCallContainer(data);
+				doLayout();
+			}
+			break;
+		}
+		}
+	}
 }

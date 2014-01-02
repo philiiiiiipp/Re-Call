@@ -1,14 +1,14 @@
-package bling.bling.caller.utils;
+package de.call.reminder.utils;
 
 import java.util.Date;
 
+import de.call.reminder.manager.CallContainer;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CallLog;
-import bling.bling.caller.manager.CallContainer;
 
 /**
  * Utils collection
@@ -106,5 +106,15 @@ public class Utils {
 	 */
 	public static long convertMStoSec(final long ms) {
 		return ms / 1000 / 60;
+	}
+
+	/**
+	 * Convert the given seconds to milliseconds
+	 * 
+	 * @param sec
+	 * @return
+	 */
+	public static long convertSecToMs(final long sec) {
+		return sec * 1000 * 60;
 	}
 }

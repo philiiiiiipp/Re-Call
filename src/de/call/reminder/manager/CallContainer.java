@@ -1,4 +1,4 @@
-package bling.bling.caller.manager;
+package de.call.reminder.manager;
 
 import java.text.DateFormat;
 import java.util.Date;

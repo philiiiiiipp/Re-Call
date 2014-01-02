@@ -15,16 +15,17 @@
         android:layout_height="wrap_content"
         style="@style/CodeFont"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="43dip"
         android:text="@string/name_label"/>
     
     <TextView
         android:id="@+id/name"
+        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CodeFont"
 		android:layout_toRightOf="@id/name_label"
         android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/number"
         android:layout_marginBottom="20dip"
         android:text="@string/dummy_number"
         />
@@ -34,14 +35,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name_label"
+        android:layout_marginRight="10dip"
         android:text="@string/number_label"/>
     
     <TextView
         android:id="@+id/number"
+        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
         android:layout_below="@id/name_label"
+        android:layout_toRightOf="@id/number_label"
         android:layout_marginBottom="20dip"
         android:text="@string/dummy_number"
         />
@@ -55,6 +58,7 @@
     
     <TextView
         android:id="@+id/time"
+        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/name"
@@ -72,6 +76,7 @@
     
     <TextView
         android:id="@+id/date"
+        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/name"

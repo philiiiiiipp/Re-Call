@@ -1,6 +1,10 @@
-package bling.bling.caller.utils;
+package de.call.reminder.utils;
 
-public class IntentStringExtra {
+public class Globals {
+
+	/*
+	 * Intent
+	 */
 
 	/**
 	 * Intent name of the number data
@@ -22,4 +26,26 @@ public class IntentStringExtra {
 	 */
 	public static final String TYPE_INTENT = "call_detail_type_intent";
 
+	/*
+	 * Other
+	 */
+
+	/**
+	 * The snooze time, when it should be asked again
+	 */
+	public static long DEFAULT_SNOOZE_TIME = 5;
+
+	/**
+	 * Quit the app after activity is finished
+	 */
+	public static int RESULT_QUIT = 30041987;
+
+	/*
+	 * Preferences
+	 */
+
+	/**
+	 * Preference field for the snooze time
+	 */
+	public static final String SNOOZE_TIME_PREFERENCE = "snooze_time_preference";
 }

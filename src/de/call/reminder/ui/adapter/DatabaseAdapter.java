@@ -1,4 +1,4 @@
-package bling.bling.caller.ui;
+package de.call.reminder.ui.adapter;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Main Activity -->
-    <string name="app_name">BlingBlingCaller</string>
+    
+	<string name="app_name">BlingBlingCaller</string>
+    
+    <!-- Call History Activity -->
+    <string name="title_activity_call_history">Call History</string>
     <string name="action_settings">Settings</string>
 
     <!-- Call Detail Activity -->
-	<string name="title_activity_call_detail">CallDetail</string>
-	<string name="call_detail_title">Create a reminder</string>
+    <string name="title_activity_call_detail">Create a reminder</string>
     <string name="start_alarm">Set Alarm</string>
     <string name="show_more_calls">Call History</string>
-	
-	<string name="minutes">min</string>
-	<string name="hours">hour</string>
-	<string name="days">day</string>
-	<string name="date_label">Date:</string>
-	<string name="number_label">Number:</string>
-	<string name="time_label">Time:</string>
-	<string name="name_label">Name:</string>
-    
-	<string name="alarm_set_to">Alarm will be set to: </string>
-	<string name="alarm_missed_call">Reminder for missed call</string>
+    <string name="minutes">min</string>
+    <string name="hours">hour</string>
+    <string name="days">day</string>
+    <string name="date_label">Date:</string>
+    <string name="number_label">Number:</string>
+    <string name="time_label">Time:</string>
+    <string name="name_label">Name:</string>
+    <string name="alarm_set_to">Alarm will be set to: </string>
+    <string name="alarm_missed_call">Reminder for missed call</string>
     <string name="alarm_outgoing_call">Reminder for outgoing call</string>
     <string name="alarm_incoming_call">Reminder for incoming call</string>
     <string name="creation_description">Create a reminder in:</string>
     <string name="alarm_starts_description">Alarm will be set to:</string>
-    
+
     <!-- Snooze or Call Activity -->
-    <string name="title_activity_snooze_or_call">SnoozeOrCallActivity</string>
+    <string name="title_activity_snooze_or_call">Reminder</string>
     <string name="snooze_button">Snooze</string>
     <string name="call_button">Call</string>
     <string name="silence_button">Silence</string>
     <string name="drop_button">Drop Call</string>
     <string name="time_to_call">Its time to call:</string>
     <string name="dummy_number">9999 999 99</string>
+
+    <!-- Settings -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="snooze_time_preferences">Snooze time in minutes</string>
     
     <!-- Image description -->
     <string name="description_call_type_image">Image, displaying the call type, outgoing, incoming etc.</string>
-    
+
     <!-- General -->
     <string name="alarm_set_successfully">The alarm was set successfully</string>
     <string name="alarm_snoozed">Will remind again in</string>
     <string name="minutesLong">minutes</string>
-    
+
     <!-- Colors -->
     <color name="white">#CCCCCC</color>
-    
+
+
 </resources>

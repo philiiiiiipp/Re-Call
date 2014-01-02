@@ -10,25 +10,25 @@
 
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-	<uses-permission android:name="android.permission.CALL_PHONE" />
-	<uses-permission android:name="android.permission.VIBRATE"/>
-	
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="bling.bling.caller.ui.MainActivity"
-            android:label="@string/app_name" 
-		    android:configChanges="orientation"
-		    android:screenOrientation="portrait">
+            android:name="de.call.reminder.ui.CallHistoryActivity"
+            android:label="@string/title_activity_call_history"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="bling.bling.caller.ui.CallDetailActivity"
-            android:label="@string/title_activity_call_detail" 
-		    android:configChanges="orientation"
-		    android:screenOrientation="portrait">
+            android:name="de.call.reminder.ui.CallDetailActivity"
+            android:label="@string/title_activity_call_detail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,10 +36,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="bling.bling.caller.ui.SnoozeOrCallActivity"
+            android:name="de.call.reminder.ui.SnoozeOrCallActivity"
             android:label="@string/title_activity_snooze_or_call"
-		    android:configChanges="orientation"
-		    android:screenOrientation="portrait" >
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="de.call.reminder.ui.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

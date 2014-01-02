@@ -1,8 +1,11 @@
-package bling.bling.caller.ui;
+package de.call.reminder.ui;
 
 import java.util.Date;
 
-import android.app.Activity;
+import de.call.reminder.manager.CallManager;
+import de.call.reminder.ui.adapter.DatabaseAdapter;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Globals;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,8 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import bling.bling.caller.R;
-import bling.bling.caller.manager.CallManager;
-import bling.bling.caller.utils.Globals;
 
 /**
  * List activity for the whole call history
@@ -22,8 +23,17 @@ import bling.bling.caller.utils.Globals;
  * @author philipp
  * 
  */
-public class MainActivity extends Activity implements OnItemClickListener {
+public class CallHistoryActivity extends ActivityWithSettings implements
+		OnItemClickListener {
 
+	/**
+	 * Request code
+	 */
+	public static final int REQUEST_CODE = 27051990;
+
+	/**
+	 * The database adapter for the call history
+	 */
 	private DatabaseAdapter _adapter;
 
 	@Override
@@ -36,20 +46,6 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		ListView v = (ListView) this.findViewById(R.id.listView1);
 		v.setAdapter(_adapter);
 		v.setOnItemClickListener(this);
-	}
-
-	protected void calledItemClicked(final View view) {
-
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
 	}
 
 	@Override
@@ -81,15 +77,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		intent.putExtra(Globals.TYPE_INTENT, callType);
 		intent.putExtra(Globals.DATE_INTENT, callDate.getTime());
 
-		this.startActivityForResult(intent, 1);
-	}
-
-	@Override
-	protected void onActivityResult(final int requestCode,
-			final int resultCode, final Intent data) {
-
-		if (resultCode == Globals.RESULT_QUIT) {
-			finish();
-		}
+		setResult(RESULT_OK, intent);
+		finish();
 	}
 }

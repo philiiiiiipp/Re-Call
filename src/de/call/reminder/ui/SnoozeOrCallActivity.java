@@ -1,21 +1,22 @@
-package bling.bling.caller.ui;
+package de.call.reminder.ui;
 
-import android.app.Activity;
+import de.call.reminder.manager.CallContainer;
+import de.call.reminder.ui.extension.ActivityWithSettings;
+import de.call.reminder.utils.Globals;
+import de.call.reminder.utils.Utils;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.Menu;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import bling.bling.caller.R;
-import bling.bling.caller.manager.CallContainer;
-import bling.bling.caller.utils.Globals;
-import bling.bling.caller.utils.Utils;
 
 /**
  * Activity which is called after an alarm went off. It gives the possibility to
@@ -24,7 +25,7 @@ import bling.bling.caller.utils.Utils;
  * @author philipp
  * 
  */
-public class SnoozeOrCallActivity extends Activity {
+public class SnoozeOrCallActivity extends ActivityWithSettings {
 
 	/**
 	 * The call which is getting reminded
@@ -90,7 +91,6 @@ public class SnoozeOrCallActivity extends Activity {
 	public void dropClicked(final View view) {
 		stopAlarm();
 
-		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
@@ -102,17 +102,32 @@ public class SnoozeOrCallActivity extends Activity {
 	public void snoozeClicked(final View view) {
 		stopAlarm();
 
+		SharedPreferences settings = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		// Seems like the default EditTextPreference saves only String values
+		// which causes this hack here
+		long snoozeTime = Globals.DEFAULT_SNOOZE_TIME;
+
+		// Just in case a false number slips in.
+		try {
+			snoozeTime = Long.parseLong(settings.getString(
+					Globals.SNOOZE_TIME_PREFERENCE, Globals.DEFAULT_SNOOZE_TIME
+							+ ""));
+		} catch (Exception e) {
+			snoozeTime = Globals.DEFAULT_SNOOZE_TIME;
+		}
+
 		Utils.setAlarm(this, SnoozeOrCallActivity.class, this.getIntent()
-				.getExtras(), System.currentTimeMillis() + Globals.SNOOZE_TIME);
+				.getExtras(),
+				System.currentTimeMillis() + Utils.convertSecToMs(snoozeTime));
 
 		Toast.makeText(
 				this,
-				this.getString(R.string.alarm_snoozed) + " "
-						+ Utils.convertMStoSec(Globals.SNOOZE_TIME) + " "
+				this.getString(R.string.alarm_snoozed) + " " + snoozeTime + " "
 						+ this.getString(R.string.minutesLong),
 				Toast.LENGTH_SHORT).show();
 
-		this.setResult(Globals.RESULT_QUIT);
 		finish();
 	}
 
@@ -128,15 +143,7 @@ public class SnoozeOrCallActivity extends Activity {
 		callIntent.setData(Uri.parse("tel:" + _call.getPhoneNumber()));
 		startActivity(callIntent);
 
-		this.setResult(Globals.RESULT_QUIT);
 		finish();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(final Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.snooze_or_call, menu);
-		return true;
 	}
 
 	/**

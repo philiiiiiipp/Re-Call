@@ -1,10 +1,10 @@
-package bling.bling.caller.test;
+package de.call.reminder.test;
 
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import bling.bling.caller.manager.CallContainer;
+import de.call.reminder.manager.CallContainer;
 
 public class Test {
 
