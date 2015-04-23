@@ -1,10 +1,10 @@
-package de.call.reminder.ui.adapter;
+package de.call.reminder.pro.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import de.call.reminder.ui.fragment.CallHistoryFragment;
-import de.call.reminder.ui.fragment.ContactsFragment;
+import de.call.reminder.pro.ui.fragment.CallHistoryFragment;
+import de.call.reminder.pro.ui.fragment.ContactsFragment;
 
 /**
  * Tabs adapter for the Contacts page

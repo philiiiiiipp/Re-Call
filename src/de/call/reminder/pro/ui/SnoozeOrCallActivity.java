@@ -1,4 +1,4 @@
-package de.call.reminder.ui;
+package de.call.reminder.pro.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,18 +12,18 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.call.reminder.R;
-import de.call.reminder.manager.CallContainer;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Globals;
-import de.call.reminder.utils.Utils;
+import de.call.reminder.pro.R;
+import de.call.reminder.pro.manager.CallContainer;
+import de.call.reminder.pro.ui.extension.ActivityWithSettings;
+import de.call.reminder.pro.utils.Globals;
+import de.call.reminder.pro.utils.Utils;
 
 /**
  * Activity which is called after an alarm went off. It gives the possibility to
  * either snooze, call or drop the desired call.
- * 
+ *
  * @author philipp
- * 
+ *
  */
 public class SnoozeOrCallActivity extends ActivityWithSettings {
 
@@ -79,7 +79,7 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 
 	/**
 	 * Silence the currently playing alarm
-	 * 
+	 *
 	 * @param view
 	 */
 	public void silenceAlarm(final View view) {
@@ -88,7 +88,7 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 
 	/**
 	 * Stop the current Alarm
-	 * 
+	 *
 	 * @param view
 	 */
 	public void dropClicked(final View view) {
@@ -99,7 +99,7 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 
 	/**
 	 * Snooze the current alarm to the predefined snooze time
-	 * 
+	 *
 	 * @param view
 	 */
 	public void snoozeClicked(final View view) {
@@ -116,7 +116,7 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 		try {
 			snoozeTime = Long.parseLong(settings.getString(
 					Globals.SNOOZE_TIME_PREFERENCE, Globals.DEFAULT_SNOOZE_TIME
-							+ ""));
+					+ ""));
 		} catch (Exception e) {
 			snoozeTime = Globals.DEFAULT_SNOOZE_TIME;
 		}
@@ -129,14 +129,14 @@ public class SnoozeOrCallActivity extends ActivityWithSettings {
 				this,
 				this.getString(R.string.alarm_snoozed) + " " + snoozeTime + " "
 						+ this.getString(R.string.minutesLong),
-				Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_SHORT).show();
 
 		finish();
 	}
 
 	/**
 	 * Calls the number and finishes this alarm activity
-	 * 
+	 *
 	 * @param view
 	 */
 	public void callClicked(final View view) {

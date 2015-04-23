@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background"
-    tools:context="de.call.reminder.ui.SnoozeOrCallActivity" >
+    tools:context="de.call.reminder.pro.ui.SnoozeOrCallActivity" >
 
     <LinearLayout
         android:id="@+id/buttonLayout"

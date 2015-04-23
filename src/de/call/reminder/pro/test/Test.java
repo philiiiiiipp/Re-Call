@@ -1,10 +1,10 @@
-package de.call.reminder.test;
+package de.call.reminder.pro.test;
 
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.call.reminder.manager.CallContainer;
+import de.call.reminder.pro.manager.CallContainer;
 
 public class Test {
 

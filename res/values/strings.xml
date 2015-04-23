@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-	<string name="app_name">Call Reminder</string>
+	<string name="app_name">Call Reminder Donate</string>
     
     <!-- Call History Activity -->
     <string name="title_activity_call_history">Contacts</string>
@@ -13,7 +13,7 @@
 	</string-array>
 
     <!-- Call Detail Activity -->
-    <string name="title_activity_call_detail">Call Reminder</string>
+    <string name="title_activity_call_detail">Call Reminder Donate</string>
     <string name="start_alarm">Set Alarm</string>
     <string name="show_more_calls">Contacts</string>
     <string name="minutes">min</string>

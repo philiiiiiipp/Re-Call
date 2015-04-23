@@ -1,4 +1,4 @@
-package de.call.reminder.ui.adapter;
+package de.call.reminder.pro.ui.adapter;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -12,13 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import de.call.reminder.R;
+import de.call.reminder.pro.R;
 
 public class HistoryDBAdapter extends CursorAdapter {
 
 	/**
 	 * Adapter to bind the call history to a ListView
-	 * 
+	 *
 	 * @param context
 	 * @param c
 	 * @param autoRequery

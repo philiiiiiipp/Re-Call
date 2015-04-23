@@ -1,4 +1,4 @@
-package de.call.reminder.utils;
+package de.call.reminder.pro.utils;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CallLog;
-import de.call.reminder.manager.CallContainer;
+import de.call.reminder.pro.manager.CallContainer;
 
 /**
  * Utils collection

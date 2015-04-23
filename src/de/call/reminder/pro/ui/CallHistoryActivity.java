@@ -1,4 +1,4 @@
-package de.call.reminder.ui;
+package de.call.reminder.pro.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -6,18 +6,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
-import de.call.reminder.R;
-import de.call.reminder.ui.adapter.TabsAdapter;
-import de.call.reminder.ui.extension.ActionBarActivityWithSettings;
+import de.call.reminder.pro.R;
+import de.call.reminder.pro.ui.adapter.TabsAdapter;
+import de.call.reminder.pro.ui.extension.ActionBarActivityWithSettings;
 
 /**
  * List activity for the whole call history
- * 
+ *
  * @author philipp
- * 
+ *
  */
 public class CallHistoryActivity extends ActionBarActivityWithSettings
-		implements TabListener {
+implements TabListener {
 
 	/**
 	 * Request code
@@ -62,22 +62,22 @@ public class CallHistoryActivity extends ActionBarActivityWithSettings
 		}
 
 		_viewPager
-				.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+		.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-					@Override
-					public void onPageSelected(final int position) {
-						_actionBar.setSelectedNavigationItem(position);
-					}
+			@Override
+			public void onPageSelected(final int position) {
+				_actionBar.setSelectedNavigationItem(position);
+			}
 
-					@Override
-					public void onPageScrolled(final int arg0,
-							final float arg1, final int arg2) {
-					}
+			@Override
+			public void onPageScrolled(final int arg0,
+					final float arg1, final int arg2) {
+			}
 
-					@Override
-					public void onPageScrollStateChanged(final int arg0) {
-					}
-				});
+			@Override
+			public void onPageScrollStateChanged(final int arg0) {
+			}
+		});
 	}
 
 	@Override

@@ -1,19 +1,19 @@
-package de.call.reminder.ui.extension;
+package de.call.reminder.pro.ui.extension;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import de.call.reminder.R;
-import de.call.reminder.ui.SettingsActivity;
+import de.call.reminder.pro.R;
+import de.call.reminder.pro.ui.SettingsActivity;
 
 /**
  * Wrapper class to provide basic functionality
- * 
+ *
  * @author philipp
- * 
+ *
  */
-public class ActivityWithSettings extends Activity {
+public class ActionBarActivityWithSettings extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {

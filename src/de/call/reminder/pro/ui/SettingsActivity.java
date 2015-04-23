@@ -1,4 +1,4 @@
-package de.call.reminder.ui;
+package de.call.reminder.pro.ui;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -7,17 +7,17 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import de.call.reminder.R;
+import de.call.reminder.pro.R;
 
 /**
  * Settings activity. Heavily deprecated due to compatibility to android 2.3-.
- * 
+ *
  * @author philipp
- * 
+ *
  */
 @SuppressWarnings("deprecation")
 public class SettingsActivity extends PreferenceActivity implements
-		OnSharedPreferenceChangeListener {
+OnSharedPreferenceChangeListener {
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -35,14 +35,14 @@ public class SettingsActivity extends PreferenceActivity implements
 	protected void onResume() {
 		super.onResume();
 		getPreferenceScreen().getSharedPreferences()
-				.registerOnSharedPreferenceChangeListener(this);
+		.registerOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		getPreferenceScreen().getSharedPreferences()
-				.unregisterOnSharedPreferenceChangeListener(this);
+		.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class SettingsActivity extends PreferenceActivity implements
 
 	/**
 	 * Update the visible preferences
-	 * 
+	 *
 	 * @param p
 	 */
 	private void updatePreferences(final Preference p) {

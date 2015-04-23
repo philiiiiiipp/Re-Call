@@ -1,4 +1,4 @@
-package de.call.reminder.ui;
+package de.call.reminder.pro.ui;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -12,17 +12,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.call.reminder.R;
-import de.call.reminder.manager.CallContainer;
-import de.call.reminder.manager.CallManager;
-import de.call.reminder.ui.extension.ActivityWithSettings;
-import de.call.reminder.utils.Utils;
+import de.call.reminder.pro.R;
+import de.call.reminder.pro.manager.CallContainer;
+import de.call.reminder.pro.manager.CallManager;
+import de.call.reminder.pro.ui.extension.ActivityWithSettings;
+import de.call.reminder.pro.utils.Utils;
 
 /**
  * Activity to create an alarm
- * 
+ *
  * @author philipp
- * 
+ *
  */
 public class CallDetailActivity extends ActivityWithSettings {
 
@@ -101,7 +101,7 @@ public class CallDetailActivity extends ActivityWithSettings {
 	/**
 	 * Get the currently used call container, either from intent or from the
 	 * call history
-	 * 
+	 *
 	 * @return the correct call container
 	 */
 	private CallContainer getCallContainer() {
@@ -115,7 +115,7 @@ public class CallDetailActivity extends ActivityWithSettings {
 
 	/**
 	 * Show the call history
-	 * 
+	 *
 	 * @param view
 	 */
 	public void showMoreCalls(final View view) {
@@ -126,7 +126,7 @@ public class CallDetailActivity extends ActivityWithSettings {
 
 	/**
 	 * Set the alarm for the given time
-	 * 
+	 *
 	 * @param view
 	 */
 	public void setAlarm(final View view) {

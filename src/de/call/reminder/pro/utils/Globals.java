@@ -1,4 +1,4 @@
-package de.call.reminder.utils;
+package de.call.reminder.pro.utils;
 
 public class Globals {
 

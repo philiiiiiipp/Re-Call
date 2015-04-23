@@ -1,4 +1,4 @@
-package de.call.reminder.manager;
+package de.call.reminder.pro.manager;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -35,7 +35,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
-import de.call.reminder.R;
+import de.call.reminder.pro.R;
 
 /**
  * Numeric wheel view.
@@ -46,7 +46,7 @@ public class WheelView extends View {
 
 	/** Top and bottom shadows colors */
 	private static final int[] SHADOWS_COLORS = new int[] { 0x70FFFFFF,
-			0x40FFFFFF, 0x00FFFFFF };
+		0x40FFFFFF, 0x00FFFFFF };
 
 	/** Top and bottom items offset (to hide that) */
 	private static final int ITEM_OFFSET_PERCENT = 10;
@@ -531,8 +531,8 @@ public class WheelView extends View {
 		itemsLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT));
 		itemsLayout
-				.measure(MeasureSpec.makeMeasureSpec(widthSize,
-						MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(
+		.measure(MeasureSpec.makeMeasureSpec(widthSize,
+				MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(
 						0, MeasureSpec.UNSPECIFIED));
 		int width = itemsLayout.getMeasuredWidth();
 
@@ -551,7 +551,7 @@ public class WheelView extends View {
 
 		itemsLayout.measure(MeasureSpec.makeMeasureSpec(width - 2 * PADDING,
 				MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(0,
-				MeasureSpec.UNSPECIFIED));
+						MeasureSpec.UNSPECIFIED));
 
 		return width;
 	}
@@ -628,7 +628,7 @@ public class WheelView extends View {
 		topShadow.draw(canvas);
 
 		bottomShadow
-				.setBounds(0, getHeight() - height, getWidth(), getHeight());
+		.setBounds(0, getHeight() - height, getWidth(), getHeight());
 		bottomShadow.draw(canvas);
 	}
 
@@ -925,7 +925,7 @@ public class WheelView extends View {
 		return viewAdapter != null
 				&& viewAdapter.getItemsCount() > 0
 				&& (isCyclic || index >= 0
-						&& index < viewAdapter.getItemsCount());
+				&& index < viewAdapter.getItemsCount());
 	}
 
 	/**
