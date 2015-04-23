@@ -1,7 +1,7 @@
 /*
  *  Android Wheel Control.
  *  https://code.google.com/p/android-wheel/
- *  
+ *
  *  Copyright 2011 Yuri Kanivets
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ import de.call.reminder.R;
 
 /**
  * Numeric wheel view.
- * 
+ *
  * @author Yuri Kanivets
  */
 public class WheelView extends View {
@@ -125,7 +125,7 @@ public class WheelView extends View {
 
 	/**
 	 * Initializes class data
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 */
@@ -176,7 +176,7 @@ public class WheelView extends View {
 
 	/**
 	 * Set the the specified scrolling interpolator
-	 * 
+	 *
 	 * @param interpolator
 	 *            the interpolator
 	 */
@@ -186,7 +186,7 @@ public class WheelView extends View {
 
 	/**
 	 * Gets count of visible items
-	 * 
+	 *
 	 * @return the count of visible items
 	 */
 	public int getVisibleItems() {
@@ -197,7 +197,7 @@ public class WheelView extends View {
 	 * Sets the desired count of visible items. Actual amount of visible items
 	 * depends on wheel layout parameters. To apply changes and rebuild view
 	 * call measure().
-	 * 
+	 *
 	 * @param count
 	 *            the desired count for visible items
 	 */
@@ -207,7 +207,7 @@ public class WheelView extends View {
 
 	/**
 	 * Gets view adapter
-	 * 
+	 *
 	 * @return the view adapter
 	 */
 	public WheelViewAdapter getViewAdapter() {
@@ -230,7 +230,7 @@ public class WheelView extends View {
 	/**
 	 * Sets view adapter. Usually new adapters contain different views, so it
 	 * needs to rebuild view by calling measure().
-	 * 
+	 *
 	 * @param viewAdapter
 	 *            the view adapter
 	 */
@@ -248,7 +248,7 @@ public class WheelView extends View {
 
 	/**
 	 * Adds wheel changing listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -258,7 +258,7 @@ public class WheelView extends View {
 
 	/**
 	 * Removes wheel changing listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -268,7 +268,7 @@ public class WheelView extends View {
 
 	/**
 	 * Notifies changing listeners
-	 * 
+	 *
 	 * @param oldValue
 	 *            the old wheel value
 	 * @param newValue
@@ -283,7 +283,7 @@ public class WheelView extends View {
 
 	/**
 	 * Adds wheel scrolling listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -293,7 +293,7 @@ public class WheelView extends View {
 
 	/**
 	 * Removes wheel scrolling listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -321,7 +321,7 @@ public class WheelView extends View {
 
 	/**
 	 * Adds wheel clicking listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -331,7 +331,7 @@ public class WheelView extends View {
 
 	/**
 	 * Removes wheel clicking listener
-	 * 
+	 *
 	 * @param listener
 	 *            the listener
 	 */
@@ -350,7 +350,7 @@ public class WheelView extends View {
 
 	/**
 	 * Gets current value
-	 * 
+	 *
 	 * @return the current value
 	 */
 	public int getCurrentItem() {
@@ -359,7 +359,7 @@ public class WheelView extends View {
 
 	/**
 	 * Sets the current item. Does nothing when index is wrong.
-	 * 
+	 *
 	 * @param index
 	 *            the item index
 	 * @param animated
@@ -407,7 +407,7 @@ public class WheelView extends View {
 
 	/**
 	 * Sets the current item w/o animation. Does nothing when index is wrong.
-	 * 
+	 *
 	 * @param index
 	 *            the item index
 	 */
@@ -418,7 +418,7 @@ public class WheelView extends View {
 	/**
 	 * Tests if wheel is cyclic. That means before the 1st item there is shown
 	 * the last one
-	 * 
+	 *
 	 * @return true if wheel is cyclic
 	 */
 	public boolean isCyclic() {
@@ -427,7 +427,7 @@ public class WheelView extends View {
 
 	/**
 	 * Set wheel cyclic flag
-	 * 
+	 *
 	 * @param isCyclic
 	 *            the flag to set
 	 */
@@ -438,7 +438,7 @@ public class WheelView extends View {
 
 	/**
 	 * Invalidates wheel
-	 * 
+	 *
 	 * @param clearCaches
 	 *            if true then cached views will be clear
 	 */
@@ -481,7 +481,7 @@ public class WheelView extends View {
 
 	/**
 	 * Calculates desired height for layout
-	 * 
+	 *
 	 * @param layout
 	 *            the source layout
 	 * @return the desired layout height
@@ -499,7 +499,7 @@ public class WheelView extends View {
 
 	/**
 	 * Returns height of wheel item
-	 * 
+	 *
 	 * @return the item height
 	 */
 	private int getItemHeight() {
@@ -517,7 +517,7 @@ public class WheelView extends View {
 
 	/**
 	 * Calculates control width and creates text layouts
-	 * 
+	 *
 	 * @param widthSize
 	 *            the input layout width
 	 * @param mode
@@ -590,7 +590,7 @@ public class WheelView extends View {
 
 	/**
 	 * Sets layouts width and height
-	 * 
+	 *
 	 * @param width
 	 *            the layout width
 	 * @param height
@@ -618,7 +618,7 @@ public class WheelView extends View {
 
 	/**
 	 * Draws shadows on top and bottom of control
-	 * 
+	 *
 	 * @param canvas
 	 *            the canvas for drawing
 	 */
@@ -634,7 +634,7 @@ public class WheelView extends View {
 
 	/**
 	 * Draws items
-	 * 
+	 *
 	 * @param canvas
 	 *            the canvas for drawing
 	 */
@@ -652,7 +652,7 @@ public class WheelView extends View {
 
 	/**
 	 * Draws rect for current value
-	 * 
+	 *
 	 * @param canvas
 	 *            the canvas for drawing
 	 */
@@ -698,7 +698,7 @@ public class WheelView extends View {
 
 	/**
 	 * Scrolls the wheel
-	 * 
+	 *
 	 * @param delta
 	 *            the scrolling value
 	 */
@@ -761,7 +761,7 @@ public class WheelView extends View {
 
 	/**
 	 * Scroll the wheel
-	 * 
+	 *
 	 * @param itemsToSkip
 	 *            items to scroll
 	 * @param time
@@ -774,7 +774,7 @@ public class WheelView extends View {
 
 	/**
 	 * Calculates range for wheel items
-	 * 
+	 *
 	 * @return the items range
 	 */
 	private ItemsRange getItemsRange() {
@@ -806,7 +806,7 @@ public class WheelView extends View {
 
 	/**
 	 * Rebuilds wheel items if necessary. Caches all unused items.
-	 * 
+	 *
 	 * @return true if items are rebuilt
 	 */
 	private boolean rebuildItems() {
@@ -892,7 +892,7 @@ public class WheelView extends View {
 
 	/**
 	 * Adds view for item to items layout
-	 * 
+	 *
 	 * @param index
 	 *            the item index
 	 * @param first
@@ -916,7 +916,7 @@ public class WheelView extends View {
 
 	/**
 	 * Checks whether intem index is valid
-	 * 
+	 *
 	 * @param index
 	 *            the item index
 	 * @return true if item index is not out of bounds or the wheel is cyclic
@@ -930,7 +930,7 @@ public class WheelView extends View {
 
 	/**
 	 * Returns view for specified item
-	 * 
+	 *
 	 * @param index
 	 *            the item index
 	 * @return item view or empty view if index is out of bounds
