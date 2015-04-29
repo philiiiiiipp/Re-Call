@@ -9,6 +9,36 @@
     android:background="@drawable/background"
     tools:context="de.call.reminder.ui.SnoozeOrCallActivity" >
 
+    <TextView
+        android:id="@+id/timeToCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        style="@style/CodeFontLarge"
+        android:text="@string/time_to_call"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/nameOrNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeToCall"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dip"
+        android:singleLine="true"
+		android:textStyle="italic"
+        style="@style/CodeFontLarge"
+        android:text="@string/dummy_number"/>
+
+    <AnalogClock
+        android:id="@+id/currentClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameOrNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dip" />
+    
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
@@ -62,35 +92,5 @@
 	        android:text="@string/call_button" />
     
     </LinearLayout>
-    
-    <TextView
-        android:id="@+id/timeToCall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        style="@style/CodeFontLarge"
-        android:text="@string/time_to_call"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/nameOrNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeToCall"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dip"
-        android:singleLine="true"
-		android:textStyle="italic"
-        style="@style/CodeFontLarge"
-        android:text="@string/dummy_number"/>
-
-    <AnalogClock
-        android:id="@+id/currentClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nameOrNumber"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dip" />
 
 </RelativeLayout>
